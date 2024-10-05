@@ -1,0 +1,9 @@
+node_modules
+test
+train
+valid
+data.yaml
+runs
+back_image.png
+front_image.png
+output.json
