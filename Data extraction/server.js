@@ -16,7 +16,7 @@ app.set('views', './public');
 app.use(express.static('public'));
 
 // MongoDB Connection URI
-const uri = "mongodb+srv://meet:Nq8PZWLC3XTDWBi3@cluster0.t5ytf.mongodb.net/"; // Replace with your MongoDB URI
+const uri = "YOUR_MOGODB_URI"; // Replace with your MongoDB URI
 const client = new MongoClient(uri);
 
 async function connectDB() {
