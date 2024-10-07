@@ -1,7 +1,7 @@
 from ultralytics import YOLO
 
 # Load the model
-model = YOLO('H:/TE_project/runs/detect/train2/weights/best.pt')
+model = YOLO('YOUR_PATH_OF_YOLO_MODEL') 
 
 # Predict and get results
 results = model.predict(source='C:/Users/Nimish/Downloads/front aadhar card.png', show=False)
