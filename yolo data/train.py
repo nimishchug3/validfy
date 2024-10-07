@@ -9,7 +9,7 @@ if __name__ == '__main__':
 
     # Define training parameters
     params = {
-        'data': 'H:/TE_project/yolo data/data.yaml',  # Path to your dataset configuration file
+        'data': 'PATH_FOR_DATA.YAML',  # Path to your dataset configuration file
         'epochs': 100,                       # Total number of epochs
         'batch': 4,                          # Batch size
         'imgsz': 640,                        # Image size
