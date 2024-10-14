@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Document for Verification</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        form { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9; }
+        label { display: block; margin: 10px 0 5px; }
+        input, select, button { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; }
+        button { background-color: #4CAF50; color: white; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        h1 { text-align: center; margin-bottom: 20px; }
+        .conditional-fields { display: none; }
+    </style>
+</head>
+<body>
+    <h1>Upload Document for Verification</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.document_type.label }}<br>
+        {{ form.document_type }}<br>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Enter the name on the document">
+
+        <label for="roll_no">Roll No</label>
+        <input type="text" id="roll_no" name="roll_no" required placeholder="Enter the roll number">
+
+        <label for="document_file">Upload Document</label>
+        <input type="file" id="document_file" name="document_file" required>
+
+        <div id="ssc-fields" class="conditional-fields">
+            <label for="result">Result (Pass/Fail)</label>
+            <select id="result" name="result">
+                <option value="">-- Select Result --</option>
+                <option value="pass">Pass</option>
+                <option value="fail">Fail</option>
+            </select>
+        </div>
+
+        <div id="cet-fields" class="conditional-fields">
+            <label for="application_no">Application No</label>
+            <input type="text" id="application_no" name="application_no" placeholder="Enter application number">
+            <label for="category">Category</label>
+            <input type="text" id="category" name="category" placeholder="Enter your category">
+            <label for="mother_name">Mother's Name</label>
+            <input type="text" id="mother_name" name="mother_name" placeholder="Enter your mother's name">
+            <label for="subject_group">Subject Group</label>
+            <input type="text" id="subject_group" name="subject_group" placeholder="Enter subject group">
+        </div>
+
+        <button type="submit">Upload and Verify</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const documentTypeSelect = document.getElementById('id_document_type');
+            const sscFields = document.getElementById('ssc-fields');
+            const cetFields = document.getElementById('cet-fields');
+
+            documentTypeSelect.addEventListener('change', function() {
+                const selectedValue = this.value;
+                if (selectedValue === 'ssc') {
+                    sscFields.style.display = 'block';
+                    cetFields.style.display = 'none';
+                } else if (selectedValue === 'cet') {
+                    cetFields.style.display = 'block';
+                    sscFields.style.display = 'none';
+                } else {
+                    sscFields.style.display = 'none';
+                    cetFields.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { text-align: center; }
+        table { width: 60%; margin: auto; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .match { color: green; }
+        .no-match { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Verification Results</h1>
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td class="{% if results.name_check == 'Match' %}match{% else %}no-match{% endif %}">{{ results.name_check }}</td>
+        </tr>
+        <tr>
+            <td>Roll No</td>
+            <td class="{% if results.roll_no_check == 'Match' %}match{% else %}no-match{% endif %}">{{ results.roll_no_check }}</td>
+        </tr>
+        {% if results.result_check %}
+        <tr>
+            <td>Result</td>
+            <td class="{% if results.result_check == 'Match' %}match{% else %}no-match{% endif %}">{{ results.result_check }}</td>
+        </tr>
+        {% endif %}
+        {% if results.application_no_check %}
+        <tr>
+            <td>Application No</td>
+            <td class="{% if results.application_no_check == 'Match' %}match{% else %}no-match{% endif %}">{{ results.application_no_check }}</td>
+        </tr>
+        {% endif %}
+        {% if results.category_check %}
+        <tr>
+            <td>Category</td>
+            <td class="{% if results.category_check == 'Match' %}match{% else %}no-match{% endif %}">{{ results.category_check }}</td>
+        </tr>
+        {% endif %}
+        {% if results.mother_name_check %}
+        <tr>
+            <td>Mother's Name</td>
+            <td class="{% if results.mother_name_check == 'Match' %}match{% else %}no-match{% endif %}">{{ results.mother_name_check }}</td>
+        </tr>
+        {% endif %}
+        {% if results.subject_group_check %}
+        <tr>
+            <td>Subject Group</td>
+            <td class="{% if results.subject_group_check == 'Match' %}match{% else %}no-match{% endif %}">{{ results.subject_group_check }}</td>
+        </tr>
+        {% endif %}
+    </table>
+    <h2>Extracted Text:</h2>
+    <pre>{{ extracted_text }}</pre>
+    <a href="{% url 'upload_marksheet' %}">Upload another document</a>
+</body>
+</html>
